@@ -1,5 +1,9 @@
 GoOutsideApp::Application.routes.draw do
-  devise_for :users
+  root to: "static_pages#home"
+
+  get "static_pages/about", as: "/about"
+
+  devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
