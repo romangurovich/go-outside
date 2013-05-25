@@ -1,9 +1,13 @@
 GoOutsideApp::Application.routes.draw do
+  resources :events
+
+
   root to: "static_pages#home"
 
   get "static_pages/about", as: "/about"
 
-  devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
+  devise_for :users, controllers: { :omniauth_callbacks => "users/omniauth_callbacks" }, 
+                      path_names: { sign_in: "login", sign_out: "logout" }
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
